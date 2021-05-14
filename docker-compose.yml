@@ -28,3 +28,5 @@ services:
       - redis
     networks:
       - default
+    stdin_open: true
+    tty: true  
