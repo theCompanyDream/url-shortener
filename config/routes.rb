@@ -4,5 +4,6 @@ Rails.application.routes.draw do
 
   get '/url/:id', to: "application#get_hash"
   match '/url', to: "application#create_hash", via: [:post]
+  match '/url/:id', to: "application#delete_hash", via: [:delete]
 
 end
