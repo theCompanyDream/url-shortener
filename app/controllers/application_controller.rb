@@ -11,7 +11,7 @@ class ApplicationController < ActionController::API
 		expire = params[:expire]
 		slug = params[:slug]
 
-		if url
+		if url == nil
 			raise ActionController::RoutingError.new('URL Not found')
 		end
 
@@ -29,7 +29,7 @@ class ApplicationController < ActionController::API
 	def get_hash
 		hash = params[:id]
 
-		if hash
+		if hash == nil
 			raise ActionController::RoutingError.new('Hash Not found')
 		end
 
@@ -40,7 +40,7 @@ class ApplicationController < ActionController::API
 	def delete_hash
 		slug = params[:id]
 
-		if hash
+		if hash == nil
 			raise ActionController::RoutingError.new('Hash Not found')
 		end
 

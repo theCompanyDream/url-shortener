@@ -30,4 +30,10 @@ Everything is in docker to make testing pretty seamless so just run `docker-comp
 
 ## Testing
 
-u
+I honestly didn't have time to add tests to this.
+
+### Desgin Descions
+
+Essentially I used redis as the database because it lends itself to this type of workload. Meaning the key, value store fits the slug that we use that points to a url value. The only reason I didn't attach this to a model is because that would have taken some extra time it was a bit easier to just bake the values into the controller. If I could have done this over again I would have had the model take 3 values slug(optional), url, and exprie date(optional). It would be cleaner because you could bake the validations right into the model.
+
+The whole reason I didn't bake the models and anything else into is because I spent way too much time trying to get the debugger working, and getting the docker-compose up and running. I ran into a problem where my page refused to reload even though the contianer was linked to my loacl enviorment. So I was forced to restart the docker-commpose everytime I made a change. I also spent too much time trying to get the docker image to be nice to alpine do to the small nature of alpine there were a lot of missing packages. In the end I got the requirements up and I'm mostly happy with what I have.
