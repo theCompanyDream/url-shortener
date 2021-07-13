@@ -30,7 +30,7 @@ services:
       - .env
     command: sh -c "rm -f tmp/pids/server.pid && bundle exec rails s -p ${APP_PORT} -b '0.0.0.0'"
     volumes:
-      - api:/usr/src/app
+      - api:/var/www
     ports:
       - "${APP_PORT}:${APP_PORT}"
     depends_on:

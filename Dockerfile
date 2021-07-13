@@ -1,7 +1,7 @@
 FROM ruby:3.0.1-alpine3.13
 
 # Move to workspace
-WORKDIR /usr/src/app
+WORKDIR /var/www
 
 # Update packages
 RUN apk update
