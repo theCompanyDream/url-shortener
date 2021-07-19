@@ -7,31 +7,16 @@ class ApplicationController < ActionController::API
 	end
 
 	def create_hash
-		url = params[:url]
-		expire = params[:expire]
-		slug = params[:slug]
 
-		if url == nil
-			raise ActionController::RoutingError.new('URL Not found')
-		end
+		link = Link.new( :url => params[:url], :expire => params[:expire], :slug => params[:slug] )
 
-		if slug
-			$redis.set(slug, url)
-			$redis.expire(slug, expire ? expire : 10000)
-		else
-			$redis.set(url.hash, url)
-			$redis.expire(url.hash, expire ? expire : 10000)
-		end
+		$redis.expire(link.url, link.expire)
 
-		render json: {'hash': slug ? slug : url.hash}
+		render json: {'hash': link.slug}
 	end
 
 	def get_hash
 		hash = params[:id]
-
-		if hash == nil
-			raise ActionController::RoutingError.new('Hash Not found')
-		end
 
 		url = $redis.get(hash)
 		redirect_to url
