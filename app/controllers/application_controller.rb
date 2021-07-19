@@ -1,5 +1,4 @@
 require 'redis'
-require 'digest/sha1'
 
 class ApplicationController < ActionController::API
 	def index
@@ -9,8 +8,6 @@ class ApplicationController < ActionController::API
 	def create_hash
 
 		link = Link.new( params[:url], params[:expire], params[:slug] )
-		$redis.set(link.slug, link.url)
-		$redis.expire(link.slug, link.expire)
 
 		render json: {'hash': link.slug}
 	end
@@ -18,21 +15,18 @@ class ApplicationController < ActionController::API
 	def get_hash
 		hash = params[:id]
 
-		if hash == nil
-			raise ActionController::RoutingError.new('Hash Not found')
-		end
+		url = Link::get_hash(hash)
 
-		url = $redis.get(hash)
 		redirect_to url
 	end
 
 	def delete_hash
 		slug = params[:id]
 
-		if hash == nil
+		if slug == nil
 			raise ActionController::RoutingError.new('Hash Not found')
 		end
 
-		$redis.del(slug)
+		Link::delete_hash(slug)
 	end
 end

@@ -1,3 +1,5 @@
+require 'redis'
+
 class Link
 
 	include ActiveModel::Model
@@ -13,8 +15,29 @@ class Link
 	def initialize(url, expire=3000, slug=nil)
 		@url = url
 		@expire = expire
-		puts "wtf #{slug} #{url}  "
 		@slug = slug ? slug : SecureRandom.uuid[0..5]
+
+		$redis.set(@slug, @url)
+		$redis.expire(@slug, @expire)
+	end
+
+	def self.get_hash(slug)
+		if slug == nil
+			raise ActionController::RoutingError.new('Slug not found')
+		end
+
+		url = $redis.get(slug)
+
+		return url
+	end
+
+
+	def self.delete_hash(slug)
+		if hash == nil
+			raise ActionController::RoutingError.new('Slug not found')
+		end
+
+		$redis.del(slug)
 	end
 
 end
