@@ -5,23 +5,27 @@ class ApplicationController < ActionController::API
 		render json: { 'data' => 'hello world'}
 	end
 
-	def create_hash
+	def create_slug
 		link = Link.new( params[:url], params[:expire], params[:slug] )
 		link.store()
-		render json: {'hash': link.slug}
+		render json: {'slug': link.slug}
 	end
 
-	def get_hash
-		hash = params[:id]
+	def get_slug
+		slug = params[:id]
 
-		url = Link::get_hash(hash)
+		url = Link::get_slug(slug)
+
+		if url == nil
+			raise ActionController::RoutingError.new('Not Found')
+		end
 
 		redirect_to url
 	end
 
-	def delete_hash
+	def delete_slug
 		slug = params[:id]
 
-		Link::delete_hash(slug)
+		Link::delete_slug(slug)
 	end
 end

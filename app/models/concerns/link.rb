@@ -17,7 +17,7 @@ class Link
 		@slug = slug ? slug : SecureRandom.uuid[0..5]
 	end
 
-	def self.get_hash(slug)
+	def self.get_slug(slug)
 		if slug == nil
 			raise ActionController::RoutingError.new('Slug is empty')
 		end
@@ -28,14 +28,14 @@ class Link
 	end
 
 	def store()
-		if Link::get_hash(@slug) == nil
+		if Link::get_slug(@slug) == nil
 			$redis.set(@slug, @url)
 			$redis.expire(@slug, @expire)
 			
 		end
 	end
 
-	def self.delete_hash(slug)
+	def self.delete_slug(slug)
 		if hash == nil
 			raise ActionController::RoutingError.new('Slug not found')
 		end
