@@ -1,4 +1,4 @@
-all: dev prod clean prod-down dev-down
+all: dev
 
 clean:
 	@echo "cleaning volumes"
@@ -15,13 +15,10 @@ dev: copy
 	@echo "Starting Dev"
 	docker-compose up -d
 
-dev-down: copy
+down: copy
 	@echo "Shutting Down Dev"
 	docker-compose down -v
 
-prod: copy
-	@echo "Deploying tbrantlyii.me"
-	docker-compose -f docker-compose.prod.yml up -d
-
-prod-down:
-	docker-compose -f docker-compose.prod.yml down -v
+test:
+	@echo "Testing product"
+	bin/rails test 

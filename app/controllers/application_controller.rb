@@ -6,9 +6,8 @@ class ApplicationController < ActionController::API
 	end
 
 	def create_hash
-
 		link = Link.new( params[:url], params[:expire], params[:slug] )
-
+		link.store()
 		render json: {'hash': link.slug}
 	end
 
@@ -22,10 +21,6 @@ class ApplicationController < ActionController::API
 
 	def delete_hash
 		slug = params[:id]
-
-		if slug == nil
-			raise ActionController::RoutingError.new('Hash Not found')
-		end
 
 		Link::delete_hash(slug)
 	end
