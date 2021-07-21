@@ -5,8 +5,6 @@ A rest service that that shortens urls for you.
 ## Requirements
 
 - Docker
-- Ruby 3.0.1
-- Redis
 - Docker-Compose
 - Make
 
