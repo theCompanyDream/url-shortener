@@ -11,6 +11,16 @@ volumes:
 
 services:
 
+  database:
+    container_name: storedb
+    image: rethinkdb
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    networks:
+      - default
+
+
   redis:
     container_name: ${REDIS_NAME}  
     restart: unless-stopped
