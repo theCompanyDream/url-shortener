@@ -8,6 +8,7 @@ class ApplicationController < ActionController::API
 	def create_slug
 		link = Link.new( params[:url], params[:expire], params[:slug] )
 		link.store()
+		link.long_store()
 		render json: {'slug': link.slug}
 	end
 
