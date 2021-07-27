@@ -17,7 +17,7 @@ class ApplicationController < ActionController::API
 		url = Link::get_slug(slug)
 
 		if url == nil
-			raise ActionController::RoutingError.new('Not Found')
+			raise ActionController::RoutingError.new('Url Not Found')
 		end
 
 		redirect_to url
