@@ -28,15 +28,15 @@ class Link
 				:url => @url,
 				:expire => @expire,
 				:slug => @slug,
-				:created => Time.now,
-				:updated => Time.now
+				:created => r.now().date(),
+				:updated => r.now().date()
 			}).run($rdb)
 		else
 			r.table(ENV['RETHINK_NAME']).insert({
 				:url => @url,
 				:expire => @expire,
 				:slug => @slug,
-				:updated => Time.now
+				:updated => r.now().date()
 			}).run($rdb)
 		end
 	end
