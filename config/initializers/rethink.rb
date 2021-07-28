@@ -13,7 +13,6 @@ $rdb = r.connect(
 databases = r.db_list().run($rdb)
 
 if ENV['RETHINK_NAME'] in databases
-
 	r.db_create(ENV['RETHINK_NAME']).run($rdb)
-	r.db(ENV['RETHINK_NAME']).table_create(ENV['RETHINK_NAME'])
+	r.db(ENV['RETHINK_NAME']).table_create(ENV['RETHINK_NAME']).run($rdb)
 end

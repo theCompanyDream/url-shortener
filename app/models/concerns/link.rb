@@ -21,19 +21,22 @@ class Link
 	end
 
 	def long_store
-		store = r.table(ENV['RETHINK_HOST']).get(@slug).run($rdb)
+		store = r.table(ENV['RETHINK_NAME']).get(@slug).run($rdb)
 
 		if store then
 			store.replace({
 				:url => @url,
 				:expire => @expire,
-				:slug => @slug
+				:slug => @slug,
+				:created => Time.now,
+				:updated => Time.now
 			}).run($rdb)
 		else
-			r.table(ENV['RETHINK_HOST']).insert({
+			r.table(ENV['RETHINK_NAME']).insert({
 				:url => @url,
 				:expire => @expire,
-				:slug => @slug
+				:slug => @slug,
+				:updated => Time.now
 			}).run($rdb)
 		end
 	end
