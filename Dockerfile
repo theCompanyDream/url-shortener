@@ -23,7 +23,7 @@ RUN apk add \
 COPY . .
 
 # Install gems 'bundler' and 'rails'
-RUN sh -c "gem install bundler && gem install rails -v 6.1.3"
+RUN sh -c "gem install bundler && gem install rails -v 6.1.3 && gem install debase -- --with-cflags=\"-Wno-error=implicit-function-declaration\""
 
 # Install local packages
 RUN bundle install

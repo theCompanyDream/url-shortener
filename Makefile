@@ -13,7 +13,7 @@ endif
 
 dev: copy
 	@echo "Starting Dev"
-	docker-compose up -d
+	docker-compose up -d --build
 
 down: copy
 	@echo "Shutting Down Dev"

@@ -6,12 +6,32 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Debug Rails server",
+            "type": "Ruby",
+            "request": "launch",
+            "cwd": "${workspaceRoot}",
+            "useBundler": true,
+            "pathToBundler": "${workspaceRoot}//bin//bundle",
+            "pathToRDebugIDE": "/usr/share/rvm/gems/ruby-3.0.1/bin/rdebug-ide",
+            "program": "${workspaceRoot}//bin//rails",
+            "env": {
+                "RETHINK_NAME": "another",
+                "RETHINK_HOST": "localhost",
+                "RETHINK_PORT": "28015"
+            },
+            "args": [
+                "server",
+                "-p",
+                "3001"
+            ]
+        },
+        {
             "name": "Listen for rdebug-ide",
             "type": "Ruby",
             "request": "attach",
             "cwd": "${workspaceRoot}",
             "remoteHost": "127.0.0.1",
-            "remotePort": "3001",
+            "remotePort": "3000",
             "remoteWorkspaceRoot": "${workspaceRoot}"
         }
     ]

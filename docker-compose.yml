@@ -17,9 +17,9 @@ services:
     restart: unless-stopped
     ports:
       - "8080:8080"
+      - "28015:28015"
     networks:
       - default
-
 
   redis:
     container_name: ${REDIS_NAME}  
