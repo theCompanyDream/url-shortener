@@ -1,11 +1,9 @@
-require 'redis'
-
 class ApplicationController < ActionController::API
 	def index
-		render json: { 'data' => 'hello world'}
+		render :index
 	end
 
-	def create_slug
+	def create_update_slug
 		link = Link.new( params[:url], params[:expire], params[:slug] )
 		link.store()
 		link.long_store()

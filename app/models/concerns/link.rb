@@ -24,13 +24,13 @@ class Link
 		store = r.table(ENV['RETHINK_NAME']).get(@slug).run($rdb)
 
 		if store then
-			store.replace({
+			store.replace(
 				:url => @url,
 				:expire => @expire,
 				:slug => @slug,
 				:created => r.now().date(),
 				:updated => r.now().date()
-			}).run($rdb)
+			).run($rdb)
 		else
 			r.table(ENV['RETHINK_NAME']).insert({
 				:url => @url,

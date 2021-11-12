@@ -22,8 +22,12 @@ RUN apk add \
 # Copy Contents to workspace
 COPY . .
 
-# Install gems 'bundler' and 'rails'
-RUN sh -c "gem install bundler && gem install rails -v 6.1.3 && gem install debase -- --with-cflags=\"-Wno-error=implicit-function-declaration\""
+# Install gems 'bundler'
+RUN gem install bundler -v 2.2.31
+# RUN gem install debugger -v 1.6.8
+RUN gem install debase -- --with-cflags="-Wno-error=implicit-function-declaration"
 
 # Install local packages
 RUN bundle install
+
+ENTRYPOINT [ "./var/www/bin/docker-entrypoint" ]

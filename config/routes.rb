@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'application#index'
 
   get '/url/:id', to: "application#get_slug"
-  match '/url', to: "application#create_slug", via: [:post]
+  match '/url', to: "application#create_update_slug", via: [:post, :put]
   match '/url/:id', to: "application#delete_slug", via: [:delete]
 
 end
