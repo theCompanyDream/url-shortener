@@ -1,6 +1,6 @@
 require "spec_helper"
 
-RSpec.describe LinkTest, type :model do
+RSpec.describe Link, type: :model do
 
 	it "test store" do
 		

@@ -1,7 +1,7 @@
 FROM ruby:3.0.1-alpine3.13
 
 # Move to workspace
-WORKDIR /var/www
+WORKDIR /opt/www
 
 # Update packages
 RUN apk update
@@ -30,4 +30,4 @@ RUN gem install debase -- --with-cflags="-Wno-error=implicit-function-declaratio
 # Install local packages
 RUN bundle install
 
-ENTRYPOINT [ "./var/www/bin/docker-entrypoint" ]
+ENTRYPOINT [ "./opt/www/bin/docker-entrypoint" ]

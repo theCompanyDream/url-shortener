@@ -21,4 +21,4 @@ down: copy
 
 test:
 	@echo "Testing product"
-	bin/rails test 
+	bundle exec rspec

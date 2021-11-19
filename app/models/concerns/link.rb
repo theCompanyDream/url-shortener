@@ -1,12 +1,10 @@
-require 'redis'
 require 'rethinkdb'
-
-include RethinkDB::Shortcuts
 
 class Link
 
 	include ActiveModel::Model
-
+	include RethinkDB::Shortcuts
+	
 	attr_accessor :url, :expire, :slug
 
 	validates :url, presence: true
@@ -32,12 +30,12 @@ class Link
 				:updated => r.now().date()
 			).run($rdb)
 		else
-			r.table(ENV['RETHINK_NAME']).insert({
+			r.table(ENV['RETHINK_NAME']).insert(
 				:url => @url,
 				:expire => @expire,
 				:slug => @slug,
 				:updated => r.now().date()
-			}).run($rdb)
+			).run($rdb)
 		end
 	end
 
