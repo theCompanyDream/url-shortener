@@ -13,11 +13,11 @@ endif
 
 dev: copy
 	@echo "Starting Dev"
-	docker-compose up -d --build
+	docker compose up -d --build
 
 down: copy
 	@echo "Shutting Down Dev"
-	docker-compose down -v
+	docker compose down -v
 
 test:
 	@echo "Testing product"

@@ -1,6 +1,6 @@
 # URL Shortener
 
-A rest service that that shortens urls for you.
+A website used to shorten urls built in rails.
 
 ## Requirements
 

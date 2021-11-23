@@ -29,5 +29,3 @@ RUN gem install debase -- --with-cflags="-Wno-error=implicit-function-declaratio
 
 # Install local packages
 RUN bundle install
-
-ENTRYPOINT [ "./opt/www/bin/docker-entrypoint" ]

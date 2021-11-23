@@ -32,7 +32,7 @@
             "cwd": "${workspaceRoot}",
             "remoteHost": "127.0.0.1",
             "remotePort": "3002",
-            "remoteWorkspaceRoot": "/",
+            "remoteWorkspaceRoot": "/opt/www",
             "showDebuggerOutput": true
         }
     ]
