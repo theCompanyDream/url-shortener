@@ -32,8 +32,7 @@ jobs:
           bin/rubocop --parallel
           
       - name: RSpec Report
-      # You may pin to the exact commit or the version.
-      uses: SonicGarden/rspec-report-action@5e02d5a3e8dcbcb48e69a867c7a84993f749bf21
+        uses: SonicGarden/rspec-report-action@5e02d5a3e8dcbcb48e69a867c7a84993f749bf21
         
       # Tags Image
       - name: Rails Tagger
