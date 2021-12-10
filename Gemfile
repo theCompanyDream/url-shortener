@@ -28,11 +28,17 @@ gem 'redis-namespace', '~> 1.8.1'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
+# Bundle Audit
+gem 'bundler-audit', require: false
+gem 'ruby_audit', require: false
+
 # Rethinkdb
 gem 'rethinkdb', '~>2.4.0'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
+
+gem 'rubocop', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
