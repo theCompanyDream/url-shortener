@@ -11,16 +11,16 @@
             "request": "launch",
             "cwd": "${workspaceRoot}",
             "useBundler": true,
-            "pathToBundler": "${workspaceRoot}//bin//bundle",
+            "pathToBundler": "${workspaceRoot}/bin/bundle",
             "pathToRDebugIDE": "/usr/share/rvm/gems/ruby-3.0.1/bin/rdebug-ide",
             "program": "${workspaceRoot}//bin//rails",
             "env": {
-                "RETHINK_NAME": "another",
+                "RETHINK_NAME": "storedb",
                 "RETHINK_HOST": "localhost",
                 "RETHINK_PORT": "28015"
             },
             "args": [
-                "server",
+                "s",
                 "-p",
                 "3001"
             ]

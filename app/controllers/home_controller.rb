@@ -1,4 +1,5 @@
 class HomeController < ActionController::Base
-	def index 
+	layout "main"
+	def index
 	end
 end

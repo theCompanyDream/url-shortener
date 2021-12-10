@@ -6,13 +6,11 @@ volumes:
     driver_opts: 
       o: bind
       type: none
-      device: "./"
-
+      device: ${PWD}
 
 services:
-
   database:
-    container_name: storedb
+    container_name: ${RETHINK_HOST}
     image: rethinkdb
     restart: unless-stopped
     ports:
@@ -33,12 +31,12 @@ services:
       - default
 
   web:
-    container_name: url_shortener
+    container_name: ${APP_HOST}
     build: 
       context: .
     env_file:
       - .env
-    command: bundle exec rdebug-ide --debug --host 0.0.0.0 --port ${APP_DEBUG_PORT} -- bin/rails s -p ${APP_PORT} -b 0.0.0.0
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rdebug-ide --debug --host 0.0.0.0 --port ${APP_DEBUG_PORT} -- bin/rails s -p ${APP_PORT} -b 0.0.0.0"
     volumes:
       - api:/var/www
     ports:
