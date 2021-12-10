@@ -16,11 +16,16 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
       - name: Setup Ruby and install gems
         uses: ruby/setup-ruby@473e4d8fe5dd94ee328fdfca9f8c9c7afc9dae5e
         with:
           bundler-cache: true
+      # Generate RSpec
+      - name: RSpec Report
+        uses: SonicGarden/rspec-report-action@5e02d5a3e8dcbcb48e69a867c7a84993f749bf21
+      # Tags Image
+      - name: Rails Tagger
+        uses: melheffe/rails_version_tagger@1.1.0
       # Add or Replace any other security checks here
       - name: Run security checks
         run: |
@@ -30,10 +35,3 @@ jobs:
       - name: Run linters
         run: |
           bin/rubocop --parallel
-          
-      - name: RSpec Report
-        uses: SonicGarden/rspec-report-action@5e02d5a3e8dcbcb48e69a867c7a84993f749bf21
-        
-      # Tags Image
-      - name: Rails Tagger
-        uses: melheffe/rails_version_tagger@1.1.0
