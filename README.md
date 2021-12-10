@@ -10,7 +10,18 @@ A website used to shorten urls built in rails.
 
 ## Directions
 
-Everything is in docker to make testing pretty seamless so just run `make`.
+Everything is in docker to make testing pretty seamless so just run.
+
+```Makefile
+	make
+```
+
+To run in debug mode
+
+```bash
+	gem install debase
+	gem install ruby-debug-ide
+```
 
 ## Future
 

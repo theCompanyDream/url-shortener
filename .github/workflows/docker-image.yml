@@ -17,7 +17,3 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
       
-    - name: Rails Tagger
-      uses: melheffe/rails_version_tagger@1.1.0
-
-    
