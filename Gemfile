@@ -31,6 +31,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 # Bundle Audit
 gem 'bundler-audit', require: false
 gem 'ruby_audit', require: false
+gem "brakeman"
 
 # Rethinkdb
 gem 'rethinkdb', '~>2.4.0'

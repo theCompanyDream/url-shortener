@@ -65,6 +65,7 @@ GEM
     bindex (0.8.1)
     bootsnap (1.9.1)
       msgpack (~> 1.0)
+    brakeman (5.1.2)
     builder (3.2.4)
     bundler-audit (0.8.0)
       bundler (>= 1.2.0, < 3)
@@ -252,6 +253,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap (>= 1.4.4)
+  brakeman
   bundler-audit
   byebug
   debase (~> 0.2.2.beta10)
