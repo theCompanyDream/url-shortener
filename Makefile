@@ -13,7 +13,7 @@ endif
 
 dev: copy
 	@echo "Starting Dev"
-	docker-compose up -d
+	docker-compose up -d --build
 
 down: copy
 	@echo "Shutting Down Dev"
@@ -21,4 +21,4 @@ down: copy
 
 test:
 	@echo "Testing product"
-	bin/rails test 
+	bundle exec rspec
