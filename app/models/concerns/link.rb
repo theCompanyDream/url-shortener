@@ -10,7 +10,7 @@ class Link
 	validates :url, presence: true
 	# validates :url, format: URI::regexp(%w[http https]) 
 	validates :expire, numericality: { only_integer: true }
-	# validates :slug, with /[-A-Za-z01234567890]/
+	# validates :slug, with /[-A-Za-z0-9]/
 
 	def initialize(url, expire=3000, slug=nil)
 		@url = url
@@ -44,6 +44,10 @@ class Link
 			$redis.set(@slug, @url)
 			$redis.expire(@slug, @expire)
 		end
+	end
+
+	def validate_url
+
 	end
 
 	def self.get_slug(slug)
