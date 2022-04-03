@@ -1,3 +1,3 @@
 class BaseController < ActionController::Base
-	layout "main"
+  layout 'main'
 end

@@ -4,8 +4,10 @@ class ErrorsController < BaseController
   end
 
   def server_error
-    render status :server_error
+    render status: :internal_server_error
   end
 
-
+  def not_authorized
+    render status: :unauthorized
+  end
 end

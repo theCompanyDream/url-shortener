@@ -15,10 +15,14 @@ dev: copy
 	@echo "Starting Dev"
 	docker-compose up -d --build
 
+sec:
+	bundle exec bundle audit --update --ignore OSVDB-108664
+	bundle exec brakeman -q -w2
+
 down: copy
 	@echo "Shutting Down Dev"
 	docker-compose down -v
 
 test:
 	@echo "Testing product"
-	bundle exec rspec
+	bundle exec rspec -f j -o tmp/test_results.json -f p
