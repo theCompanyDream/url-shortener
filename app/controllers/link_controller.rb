@@ -1,13 +1,17 @@
-class LinkController < ActionController::Base
+class LinkController < BaseController
 	def create_update_slug
-		link = Link.new( params[:url], params[:expire], params[:slug] )
+		link = Link.new(params[:url], params[:expire], params[:slug])
 		link.store()
 		link.long_store()
-		render json: {'slug': link.slug}
+		render json: {:slug => link.slug}
 	end
 
 	def get_slug
 		slug = params[:id]
+		
+		unless Link::validate_url(slug)
+			render "invalid"
+		end
 
 		url = Link::get_slug(slug)
 

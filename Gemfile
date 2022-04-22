@@ -9,6 +9,8 @@ gem 'rails', '~> 6.1.3', '>= 6.1.3.2'
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 5.0'
+# Add Bootstrap to rails
+gem 'bootstrap-sass'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -28,11 +30,20 @@ gem 'redis-namespace', '~> 1.8.1'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
+# Bundle Audit
+gem 'bundler-audit', require: false
+gem 'ruby_audit', require: false
+gem "brakeman"
+
 # Rethinkdb
 gem 'rethinkdb', '~>2.4.0'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
+
+gem 'rubocop', require: false
+
+gem 'nobrainer'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
